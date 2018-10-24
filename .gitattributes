@@ -52,5 +52,7 @@
 #*.filters   merge=binary
 #*.vcxitems  merge=binary
 
-* linguist-vendored
+FileUpload/content/css/* linguist-vendored
+FileUpload/content/js/* linguist-vendored
+FileUpload/content/js/Site.js linguist-vendored=false
 *.cs linguist-vendored=false
