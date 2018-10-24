@@ -332,3 +332,5 @@ ASALocalRun/
 CopyServer\.bat
 
 CopyServer\.txt
+
+FileUpload/Confidential\.cs
