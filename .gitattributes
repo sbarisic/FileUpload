@@ -52,5 +52,5 @@
 #*.filters   merge=binary
 #*.vcxitems  merge=binary
 
-FileUpload/content/* linguist-vendored
-
+* linguist-vendored
+*.cs linguist-vendored=false
