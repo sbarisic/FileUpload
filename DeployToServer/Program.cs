@@ -62,9 +62,25 @@ namespace DeployToServer {
 				S.RemoveFiles(Remote).Check();
 		}
 
-		static void Copy(Session S, string Local) {
+		static void Copy(Session S, string Local, string DestFolder, bool Recursive = false) {
 			Local = Path.Combine(Source, Local).CleanPath();
-			S.PutFiles(Local, Destination, options: new TransferOptions() { TransferMode = TransferMode.Binary }).Check();
+
+			if (Recursive || !string.IsNullOrWhiteSpace(Path.GetExtension(Local))) {
+				S.PutFiles(Local, Destination, options: new TransferOptions() { TransferMode = TransferMode.Binary }).Check();
+			} else {
+
+				string[] LocalFiles = Directory.GetFiles(Local);
+				string DestFolderName = DestFolder.Length > 0 ? DestFolder + "/" : "";
+
+				foreach (var LocalFile in LocalFiles) {
+					if (Path.GetExtension(LocalFile).ToLower() == ".pdb")
+						continue;
+
+					S.PutFiles(LocalFile, Destination + DestFolderName, options: new TransferOptions() { TransferMode = TransferMode.Binary }).Check();
+				}
+
+				//S.PutFiles(Local, Destination, options: new TransferOptions() { TransferMode = TransferMode.Binary }).Check();
+			}
 		}
 
 		static void Main(string[] Args) {
@@ -102,12 +118,13 @@ namespace DeployToServer {
 				TransferOptions TOptions = new TransferOptions() { TransferMode = TransferMode.Binary };
 
 				RemoveIfExists(S, "bin");
-				RemoveIfExists(S, "content");
-				RemoveIfExists(S, "*.aspx");
+				Copy(S, "bin", "bin");
 
-				Copy(S, "bin");
-				Copy(S, "content");
-				Copy(S, "*.aspx");
+				RemoveIfExists(S, "content");
+				Copy(S, "bin/content", "content", true);
+
+				RemoveIfExists(S, "*.aspx");
+				Copy(S, "*.aspx", "");
 			}
 
 			if (!UsingExistingCredentials) {

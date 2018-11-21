@@ -7,8 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUpload", "FileUpload\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployToServer", "DeployToServer\DeployToServer.csproj", "{8454F517-2572-4977-BB13-ABFB42BAF4FC}"
 	ProjectSection(ProjectDependencies) = postProject
+		{429B53BC-BBAC-478F-B759-D01B0C3C901D} = {429B53BC-BBAC-478F-B759-D01B0C3C901D}
 		{0EAAF5D2-9DE0-4365-B975-E51ABE74836C} = {0EAAF5D2-9DE0-4365-B975-E51ABE74836C}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMarkdown", "WebMarkdown\WebMarkdown.csproj", "{429B53BC-BBAC-478F-B759-D01B0C3C901D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +27,10 @@ Global
 		{8454F517-2572-4977-BB13-ABFB42BAF4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8454F517-2572-4977-BB13-ABFB42BAF4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8454F517-2572-4977-BB13-ABFB42BAF4FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429B53BC-BBAC-478F-B759-D01B0C3C901D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429B53BC-BBAC-478F-B759-D01B0C3C901D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429B53BC-BBAC-478F-B759-D01B0C3C901D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429B53BC-BBAC-478F-B759-D01B0C3C901D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
